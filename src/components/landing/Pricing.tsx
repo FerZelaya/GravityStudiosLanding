@@ -1,0 +1,98 @@
+import { Button } from "@/components/ui/button";
+import { CardDescription, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { Spotlight } from "@/components/ui/spotlight";
+import { pricingSection, pricingTiers } from "@/content/pricing";
+import { cn } from "@/lib/utils";
+
+export function Pricing() {
+  return (
+    <section
+      id="pricing"
+      className="dark bg-background text-foreground relative scroll-mt-24 overflow-hidden py-20 md:scroll-mt-28"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 flex justify-end"
+        aria-hidden
+      >
+        <Spotlight
+          align="right"
+          className="-top-32 right-0 opacity-80 md:-top-40 md:right-[15%]"
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="text-muted-foreground text-sm font-medium tracking-wide uppercase">
+            {pricingSection.eyebrow}
+          </p>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
+            {pricingSection.title}
+          </h2>
+          <p className="text-muted-foreground mt-4 text-pretty">
+            {pricingSection.description}
+          </p>
+        </div>
+
+        <div
+          className={cn(
+            "mt-14 grid gap-6",
+            "md:grid-cols-3 md:grid-rows-[auto_auto_auto_auto_1fr_auto] md:items-stretch",
+          )}
+        >
+          {pricingTiers.map((tier) => {
+            const Icon = tier.icon;
+            return (
+              <article
+                key={tier.id}
+                className={cn(
+                  "group/card overflow-hidden rounded-3xl border border-border/80 bg-card text-sm text-card-foreground text-center shadow-none ring-1 ring-foreground/10",
+                  "max-md:flex max-md:flex-col max-md:gap-4 max-md:py-4",
+                  "md:row-span-6 md:grid md:min-w-0 md:[grid-template-rows:subgrid] md:gap-y-3 md:py-4 md:pb-0",
+                )}
+              >
+                <CardTitle className="text-balance px-4 text-sm font-semibold tracking-wide uppercase">
+                  {tier.title}
+                </CardTitle>
+                <CardDescription className="text-muted-foreground px-4 text-xs text-pretty">
+                  {tier.subtitle}
+                </CardDescription>
+                <div className="bg-muted mx-auto flex size-14 items-center justify-center rounded-full ring-1 ring-border">
+                  <span className="bg-foreground text-background rounded-full p-2.5 shadow-inner">
+                    <Icon className="size-5" aria-hidden />
+                  </span>
+                </div>
+                <p className="text-foreground px-4 text-center text-3xl font-semibold tabular-nums">
+                  {tier.price}
+                </p>
+                <div className="flex min-h-0 w-full flex-1 flex-col items-center gap-4 px-6 pb-2 text-center max-md:flex-1 md:h-full">
+                  <Separator className="max-w-xs" />
+                  <ul className="text-muted-foreground w-full max-w-sm space-y-2.5 text-sm">
+                    {tier.features.map((f) => (
+                      <li key={f} className="text-balance leading-snug">
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div
+                  data-slot="card-footer"
+                  className="flex items-center justify-center rounded-b-xl border-t border-border/80 bg-muted/50 p-4 pb-6"
+                >
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="rounded-full border-border px-6 hover:bg-muted"
+                    asChild
+                  >
+                    <a href="#contact">{tier.ctaLabel}</a>
+                  </Button>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
