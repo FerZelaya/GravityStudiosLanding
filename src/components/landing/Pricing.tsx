@@ -1,11 +1,21 @@
+import { useTranslation } from "react-i18next";
+import type { TFunction } from "i18next";
+
 import { Button } from "@/components/ui/button";
 import { CardDescription, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Spotlight } from "@/components/ui/spotlight";
-import { pricingSection, pricingTiers } from "@/content/pricing";
+import { pricingTierMeta, type PricingTierId } from "@/content/pricing";
 import { cn } from "@/lib/utils";
 
+function tierFeatures(t: TFunction, id: PricingTierId): string[] {
+  const features = t(`pricing.tiers.${id}.features`, { returnObjects: true });
+  return Array.isArray(features) ? (features as string[]) : [];
+}
+
 export function Pricing() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="pricing"
@@ -24,13 +34,13 @@ export function Pricing() {
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-muted-foreground text-sm font-medium tracking-wide uppercase">
-            {pricingSection.eyebrow}
+            {t("pricing.eyebrow")}
           </p>
           <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
-            {pricingSection.title}
+            {t("pricing.title")}
           </h2>
           <p className="text-muted-foreground mt-4 text-pretty">
-            {pricingSection.description}
+            {t("pricing.description")}
           </p>
         </div>
 
@@ -40,8 +50,10 @@ export function Pricing() {
             "md:grid-cols-3 md:grid-rows-[auto_auto_auto_auto_1fr_auto] md:items-stretch",
           )}
         >
-          {pricingTiers.map((tier) => {
+          {pricingTierMeta.map((tier) => {
             const Icon = tier.icon;
+            const features = tierFeatures(t, tier.id);
+
             return (
               <article
                 key={tier.id}
@@ -52,10 +64,10 @@ export function Pricing() {
                 )}
               >
                 <CardTitle className="text-balance px-4 text-sm font-semibold tracking-wide uppercase">
-                  {tier.title}
+                  {t(`pricing.tiers.${tier.id}.title`)}
                 </CardTitle>
                 <CardDescription className="text-muted-foreground px-4 text-xs text-pretty">
-                  {tier.subtitle}
+                  {t(`pricing.tiers.${tier.id}.subtitle`)}
                 </CardDescription>
                 <div className="bg-muted mx-auto flex size-14 items-center justify-center rounded-full ring-1 ring-border">
                   <span className="bg-foreground text-background rounded-full p-2.5 shadow-inner">
@@ -68,9 +80,9 @@ export function Pricing() {
                 <div className="flex min-h-0 w-full flex-1 flex-col items-center gap-4 px-6 pb-2 text-center max-md:flex-1 md:h-full">
                   <Separator className="max-w-xs" />
                   <ul className="text-muted-foreground w-full max-w-sm space-y-2.5 text-sm">
-                    {tier.features.map((f) => (
-                      <li key={f} className="text-balance leading-snug">
-                        {f}
+                    {features.map((feature) => (
+                      <li key={feature} className="text-balance leading-snug">
+                        {feature}
                       </li>
                     ))}
                   </ul>
@@ -85,7 +97,7 @@ export function Pricing() {
                     className="rounded-full border-border px-6 hover:bg-muted"
                     asChild
                   >
-                    <a href="#contact">{tier.ctaLabel}</a>
+                    <a href="#contact">{t("pricing.cta")}</a>
                   </Button>
                 </div>
               </article>

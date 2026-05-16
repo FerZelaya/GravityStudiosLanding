@@ -1,35 +1,33 @@
-import { useState, type ReactNode } from 'react'
-import { Mail, MapPin, Phone } from 'lucide-react'
+import { useState, type ReactNode } from "react";
+import { Mail, Phone } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
-import { Textarea } from '@/components/ui/textarea'
-import {
-  contactDetails,
-  contactForm,
-  countryDialOptions,
-} from '@/content/contact'
-import { cn } from '@/lib/utils'
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { countryDialOptions } from "@/content/contact";
+import { cn } from "@/lib/utils";
 
 const iconWrap =
-  'bg-foreground text-background flex size-12 items-center justify-center rounded-full shadow-sm ring-1 ring-border'
+  "bg-foreground text-background flex size-12 items-center justify-center rounded-full shadow-sm ring-1 ring-border";
 
 export function Contact() {
-  const [submitted, setSubmitted] = useState(false)
-  const [dialCode, setDialCode] = useState<string>(countryDialOptions[0].value)
+  const { t } = useTranslation();
+  const [submitted, setSubmitted] = useState(false);
+  const [dialCode, setDialCode] = useState<string>(countryDialOptions[0].value);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setSubmitted(true)
+    e.preventDefault();
+    setSubmitted(true);
   }
 
   return (
@@ -38,66 +36,81 @@ export function Contact() {
       className="scroll-mt-24 border-t border-border/60 bg-muted/25 py-20 md:scroll-mt-28"
     >
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
-        <div className="grid gap-10 md:grid-cols-3 md:gap-6">
-          <ContactChip
-            icon={<MapPin className="size-5" aria-hidden />}
-            label={contactDetails.location.label}
-            value={contactDetails.location.value}
-          />
+        <div className="grid gap-10 md:grid-cols-2 md:gap-4">
           <ContactChip
             icon={<Phone className="size-5" aria-hidden />}
-            label={contactDetails.phone.label}
-            value={contactDetails.phone.value}
+            label={t("contact.phone.label")}
+            value={t("contact.phone.value")}
           />
           <ContactChip
             icon={<Mail className="size-5" aria-hidden />}
-            label={contactDetails.email.label}
-            value={contactDetails.email.value}
+            label={t("contact.email.label")}
+            value={t("contact.email.value")}
           />
         </div>
 
         <Card className="mt-12 rounded-3xl border-border/80 shadow-sm">
           <CardHeader>
-            <CardTitle className="text-xl font-semibold">{contactForm.title}</CardTitle>
+            <CardTitle className="text-xl font-semibold">
+              {t("contact.form.title")}
+            </CardTitle>
           </CardHeader>
           <CardContent>
             {submitted ? (
               <p className="text-muted-foreground py-6 text-center text-sm">
-                {contactForm.success}
+                {t("contact.form.success")}
               </p>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                <input type="hidden" name="countryCode" value={dialCode} readOnly />
+                <input
+                  type="hidden"
+                  name="countryCode"
+                  value={dialCode}
+                  readOnly
+                />
                 <div className="space-y-2">
-                  <Label htmlFor="contact-name">{contactForm.fields.name.label}</Label>
+                  <Label htmlFor="contact-name">
+                    {t("contact.form.fields.name.label")}
+                  </Label>
                   <Input
                     id="contact-name"
                     name="name"
                     required
                     autoComplete="name"
-                    placeholder={contactForm.fields.name.placeholder}
+                    placeholder={t("contact.form.fields.name.placeholder")}
                     className="bg-background h-10"
                   />
                 </div>
 
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="contact-dial">{contactForm.fields.countryCode.label}</Label>
+                    <Label htmlFor="contact-dial">
+                      {t("contact.form.fields.countryCode.label")}
+                    </Label>
                     <Select value={dialCode} onValueChange={setDialCode}>
-                      <SelectTrigger id="contact-dial" className="w-full bg-background">
-                        <SelectValue placeholder={contactForm.fields.countryCode.placeholder} />
+                      <SelectTrigger
+                        id="contact-dial"
+                        className="w-full bg-background"
+                      >
+                        <SelectValue
+                          placeholder={t(
+                            "contact.form.fields.countryCode.placeholder",
+                          )}
+                        />
                       </SelectTrigger>
                       <SelectContent>
                         {countryDialOptions.map((opt) => (
                           <SelectItem key={opt.value} value={opt.value}>
-                            {opt.label}
+                            {t(`contact.countries.${opt.countryKey}`)}
                           </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="contact-phone">{contactForm.fields.phone.label}</Label>
+                    <Label htmlFor="contact-phone">
+                      {t("contact.form.fields.phone.label")}
+                    </Label>
                     <Input
                       id="contact-phone"
                       name="phone"
@@ -105,33 +118,37 @@ export function Contact() {
                       inputMode="tel"
                       required
                       autoComplete="tel"
-                      placeholder={contactForm.fields.phone.placeholder}
+                      placeholder={t("contact.form.fields.phone.placeholder")}
                       className="bg-background h-10"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="contact-email">{contactForm.fields.email.label}</Label>
+                  <Label htmlFor="contact-email">
+                    {t("contact.form.fields.email.label")}
+                  </Label>
                   <Input
                     id="contact-email"
                     name="email"
                     type="email"
                     required
                     autoComplete="email"
-                    placeholder={contactForm.fields.email.placeholder}
+                    placeholder={t("contact.form.fields.email.placeholder")}
                     className="bg-background h-10"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="contact-message">{contactForm.fields.message.label}</Label>
+                  <Label htmlFor="contact-message">
+                    {t("contact.form.fields.message.label")}
+                  </Label>
                   <Textarea
                     id="contact-message"
                     name="message"
                     required
                     rows={5}
-                    placeholder={contactForm.fields.message.placeholder}
+                    placeholder={t("contact.form.fields.message.placeholder")}
                     className="bg-background min-h-[8rem] resize-y"
                   />
                 </div>
@@ -141,7 +158,7 @@ export function Contact() {
                   variant="outline"
                   className="h-11 w-full rounded-xl border-border hover:bg-muted sm:w-auto sm:self-center"
                 >
-                  {contactForm.submit}
+                  {t("contact.form.submit")}
                 </Button>
               </form>
             )}
@@ -149,7 +166,7 @@ export function Contact() {
         </Card>
       </div>
     </section>
-  )
+  );
 }
 
 function ContactChip({
@@ -157,9 +174,9 @@ function ContactChip({
   label,
   value,
 }: {
-  icon: ReactNode
-  label: string
-  value: string
+  icon: ReactNode;
+  label: string;
+  value: string;
 }) {
   return (
     <div className="flex flex-col items-center text-center">
@@ -169,5 +186,5 @@ function ContactChip({
       </p>
       <p className="text-foreground mt-1 text-sm font-medium">{value}</p>
     </div>
-  )
+  );
 }
