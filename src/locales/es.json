@@ -1,0 +1,114 @@
+{
+	"nav": {
+		"home": "Inicio",
+		"about": "Nosotros",
+		"plans": "Planes",
+		"contact": "Contacto",
+		"openMenu": "Abrir menú",
+		"mainMenu": "Menú principal",
+		"logoAlt": "Logo de Gravity Studios"
+	},
+	"hero": {
+		"title": "Tu presencia digital, mejorada",
+		"subtitle": "Un estudio enfocado en sitios de marketing rápidos y accesibles—estrategia, diseño e implementación en un solo lugar."
+	},
+	"about": {
+		"title": "Quiénes somos",
+		"paragraph1": "En Gravity Studios creamos sitios web y aplicaciones modernas que ayudan a las empresas a verse profesionales, atraer clientes y crecer en línea. Nos enfocamos en diseño limpio, experiencia de usuario fluida y desarrollo confiable. Ya sea que necesites una landing page simple, un sitio corporativo o una aplicación web a medida, nuestro objetivo es crear soluciones digitales pulidas, rápidas y fáciles de usar. Creemos que tu sitio debe hacer más que existir: debe representar tu marca, generar confianza y convertir visitantes en clientes. Del concepto al lanzamiento, Gravity Studios ayuda a llevar tus ideas al espacio.",
+		"paragraph2": "Ya sea que estés validando una nueva oferta o renovando una marca establecida, mantenemos el proceso transparente—alcances definidos, progreso visible y frontends optimizados por defecto."
+	},
+	"pricing": {
+		"eyebrow": "Precios",
+		"title": "Paquetes",
+		"description": "Puntos de partida claros para lanzar y escalar.",
+		"cta": "Contáctanos",
+		"tiers": {
+			"startup": {
+				"title": "Paquete web startup",
+				"subtitle": "Ideal para sitios de marketing estáticos",
+				"features": [
+					"5 imágenes de stock",
+					"1 página interna",
+					"Hosting administrado",
+					"Seguridad SSL"
+				]
+			},
+			"professional": {
+				"title": "Paquete web profesional",
+				"subtitle": "Diseñado para crecer con tu negocio",
+				"features": [
+					"7 imágenes de stock",
+					"5 páginas internas",
+					"1 slider de imágenes",
+					"Hosting administrado",
+					"Gestor de contenidos (CMS)",
+					"Seguridad SSL",
+					"Optimización SEO"
+				]
+			},
+			"commercial": {
+				"title": "Paquete web personalizado",
+				"subtitle": "Ideal para e-commerce: tiendas, hoteles, reservas y pagos de citas",
+				"features": [
+					"¿Tienes un sitio web o aplicación específica en mente? Contáctanos y hablaremos de tus objetivos, funciones y la mejor solución para tu negocio. Construido alrededor de tu marca, tus necesidades y tu visión."
+				]
+			}
+		}
+	},
+	"contact": {
+		"location": {
+			"label": "Ubicación",
+			"value": "Tu ciudad, país"
+		},
+		"phone": {
+			"label": "Teléfono",
+			"value": "+000 0000 0000"
+		},
+		"email": {
+			"label": "Correo",
+			"value": "info@gravitystudios.io"
+		},
+		"form": {
+			"title": "Ponte en contacto con nosotros",
+			"fields": {
+				"name": {
+					"label": "Tu nombre",
+					"placeholder": "Tu nombre"
+				},
+				"countryCode": {
+					"label": "Código de país",
+					"placeholder": "Selecciona país"
+				},
+				"phone": {
+					"label": "Número de teléfono",
+					"placeholder": "Número de teléfono"
+				},
+				"email": {
+					"label": "Correo electrónico",
+					"placeholder": "Tu correo"
+				},
+				"message": {
+					"label": "Cuéntanos sobre tu proyecto",
+					"placeholder": "Cuéntanos sobre tu proyecto"
+				}
+			},
+			"submit": "Enviar mensaje",
+			"success": "Gracias — te responderemos lo antes posible."
+		},
+		"countries": {
+			"hn": "Honduras (+504)",
+			"us": "Estados Unidos (+1)",
+			"mx": "México (+52)",
+			"es": "España (+34)"
+		}
+	},
+	"footer": {
+		"copyright": "© 2026 Gravity Studios. Todos los derechos reservados.",
+		"language": "Idioma"
+	},
+	"language": {
+		"en": "English",
+		"es": "Español",
+		"switchTo": "Cambiar a {{language}}"
+	}
+}

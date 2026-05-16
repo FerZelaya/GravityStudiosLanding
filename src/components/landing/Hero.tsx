@@ -1,4 +1,5 @@
 import { useReducedMotion } from "motion/react";
+import { useTranslation } from "react-i18next";
 
 import { MagicCard } from "@/components/ui/magic-card";
 import { Spotlight } from "@/components/ui/spotlight";
@@ -38,14 +39,15 @@ export function Hero() {
 }
 
 function HeadlineBlock() {
+  const { t } = useTranslation();
+
   return (
     <>
-      <h1 className="text-foreground text-4xl leading-[1.05] font-semibold tracking-tight  sm:text-5xl md:text-6xl">
-        Your digital presence, delivered
+      <h1 className="text-foreground text-4xl leading-[1.05] font-semibold tracking-tight sm:text-5xl md:text-6xl">
+        {t("hero.title")}
       </h1>
       <p className="text-muted-foreground mx-auto mt-5 max-w-xl text-balance text-base md:text-lg">
-        A focused studio for fast, accessible marketing sites—strategy, design,
-        and implementation in one lane.
+        {t("hero.subtitle")}
       </p>
     </>
   );

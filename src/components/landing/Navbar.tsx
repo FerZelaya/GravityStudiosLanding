@@ -1,4 +1,5 @@
 import { Menu } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 import logoNavbar from "@/assets/gravity-logo-navbar-4.png";
 import { GradientBorderLink } from "@/components/ui/gradient-border-link";
@@ -13,14 +14,16 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
-const links = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#pricing", label: "Plans" },
-  { href: "#contact", label: "Contact" },
+const linkKeys = [
+  { href: "#home", key: "nav.home" },
+  { href: "#about", key: "nav.about" },
+  { href: "#pricing", key: "nav.plans" },
+  { href: "#contact", key: "nav.contact" },
 ] as const;
 
 function Logo({ className }: { className?: string }) {
+  const { t } = useTranslation();
+
   return (
     <a
       href="#home"
@@ -31,13 +34,13 @@ function Logo({ className }: { className?: string }) {
     >
       <img
         src={logoNavbar}
-        alt="Gravity Studios Logo"
-        className="h-10 w-10 shrink-0  object-cover md:h-12 md:w-12"
+        alt={t("nav.logoAlt")}
+        className="h-10 w-10 shrink-0 object-cover md:h-12 md:w-12"
         width={50}
         height={50}
         decoding="async"
       />
-      <span className="text-base md:text-xl font-bold">Gravity Studios</span>
+      <span className="text-base font-bold md:text-xl">Gravity Studios</span>
     </a>
   );
 }
@@ -49,6 +52,8 @@ function NavLinks({
   className?: string;
   onLinkClick?: () => void;
 }) {
+  const { t } = useTranslation();
+
   return (
     <nav
       className={cn(
@@ -56,13 +61,13 @@ function NavLinks({
         className,
       )}
     >
-      {links.map((link) => (
+      {linkKeys.map((link) => (
         <GradientBorderLink
           key={link.href}
           href={link.href}
           onClick={onLinkClick}
         >
-          {link.label}
+          {t(link.key)}
         </GradientBorderLink>
       ))}
     </nav>
@@ -70,6 +75,8 @@ function NavLinks({
 }
 
 export function Navbar() {
+  const { t } = useTranslation();
+
   return (
     <header className="bg-background/80 supports-backdrop-filter:backdrop-blur-md sticky top-0 z-50 border-b border-border/80">
       <div className="relative mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 md:justify-start">
@@ -84,19 +91,19 @@ export function Navbar() {
                 variant="ghost"
                 size="icon"
                 type="button"
-                aria-label="Open menu"
+                aria-label={t("nav.openMenu")}
               >
                 <Menu className="size-5" />
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[min(100%,20rem)]">
               <SheetHeader>
-                <SheetTitle className="sr-only">Main menu</SheetTitle>
+                <SheetTitle className="sr-only">{t("nav.mainMenu")}</SheetTitle>
               </SheetHeader>
               <div className="flex flex-col gap-6 px-2 pb-6">
                 <Logo />
                 <div className="flex flex-col gap-2">
-                  {links.map((link) => (
+                  {linkKeys.map((link) => (
                     <SheetClose asChild key={link.href}>
                       <GradientBorderLink
                         href={link.href}
@@ -104,7 +111,7 @@ export function Navbar() {
                         innerMaskClassName="bg-popover"
                         outerFill="var(--popover)"
                       >
-                        {link.label}
+                        {t(link.key)}
                       </GradientBorderLink>
                     </SheetClose>
                   ))}
