@@ -3,6 +3,7 @@ import type { TFunction } from "i18next";
 
 import { Button } from "@/components/ui/button";
 import { CardDescription, CardTitle } from "@/components/ui/card";
+import { ScrollReveal, ScrollRevealGroup } from "@/components/ui/scroll-reveal";
 import { Separator } from "@/components/ui/separator";
 import { Spotlight } from "@/components/ui/spotlight";
 import { pricingTierMeta, type PricingTierId } from "@/content/pricing";
@@ -32,7 +33,7 @@ export function Pricing() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mx-auto max-w-2xl text-center">
+        <ScrollReveal className="mx-auto max-w-2xl text-center">
           <p className="text-muted-foreground text-sm font-medium tracking-wide uppercase">
             {t("pricing.eyebrow")}
           </p>
@@ -42,9 +43,9 @@ export function Pricing() {
           <p className="text-muted-foreground mt-4 text-pretty">
             {t("pricing.description")}
           </p>
-        </div>
+        </ScrollReveal>
 
-        <div
+        <ScrollRevealGroup
           className={cn(
             "mt-14 grid gap-6",
             "md:grid-cols-3 md:grid-rows-[auto_auto_auto_auto_1fr_auto] md:items-stretch",
@@ -55,8 +56,10 @@ export function Pricing() {
             const features = tierFeatures(t, tier.id);
 
             return (
-              <article
+              <ScrollReveal
                 key={tier.id}
+                as="article"
+                staggerItem
                 className={cn(
                   "group/card overflow-hidden rounded-3xl border border-border/80 bg-card text-sm text-card-foreground text-center shadow-none ring-1 ring-foreground/10",
                   "max-md:flex max-md:flex-col max-md:gap-4 max-md:py-4",
@@ -100,10 +103,10 @@ export function Pricing() {
                     <a href="#contact">{t("pricing.cta")}</a>
                   </Button>
                 </div>
-              </article>
+              </ScrollReveal>
             );
           })}
-        </div>
+        </ScrollRevealGroup>
       </div>
     </section>
   );

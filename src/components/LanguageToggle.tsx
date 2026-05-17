@@ -26,7 +26,7 @@ export function LanguageToggle({ className }: LanguageToggleProps) {
         onClick={() => setLanguage("en")}
         switchLabel={t("language.switchTo", { language: t("language.en") })}
       />
-      <span className="text-zinc-600 select-none" aria-hidden>
+      <span className="text-border select-none" aria-hidden>
         |
       </span>
       <LangButton
@@ -59,8 +59,8 @@ function LangButton({
       className={cn(
         "rounded-md px-2.5 py-1 text-xs font-medium transition-colors",
         active
-          ? "bg-zinc-100 text-zinc-950"
-          : "text-zinc-400 hover:text-zinc-200",
+          ? "bg-foreground text-background"
+          : "text-muted-foreground hover:text-foreground",
       )}
     >
       {label}

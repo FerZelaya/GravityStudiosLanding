@@ -1,54 +1,58 @@
-import { useReducedMotion } from "motion/react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
-import { MagicCard } from "@/components/ui/magic-card";
-import { Spotlight } from "@/components/ui/spotlight";
+import { HeroLottie } from "@/components/landing/HeroLottie";
+import { cn } from "@/lib/utils";
 
 export function Hero() {
-  const prefersReducedMotion = useReducedMotion();
+  const { t } = useTranslation();
 
   return (
     <section
       id="home"
-      className="dark bg-background text-foreground relative scroll-mt-24 overflow-hidden pb-20 pt-10 md:scroll-mt-28 md:pb-28 md:pt-14"
+      className="dark relative flex min-h-svh scroll-mt-24 items-center overflow-hidden bg-black text-white md:scroll-mt-28"
     >
       <div
-        className="pointer-events-none absolute inset-0 flex justify-center"
+        className="pointer-events-none absolute -right-20 top-1/2 h-[min(85vh,680px)] w-[min(85vh,680px)] -translate-y-1/2 rounded-full bg-zinc-400/[0.07] blur-[100px]"
         aria-hidden
-      >
-        <Spotlight className="-top-32 left-0 opacity-80 md:-top-40 md:left-[15%]" />
-      </div>
+      />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          {prefersReducedMotion ? (
-            <div className="rounded-3xl px-2 py-4">
-              <HeadlineBlock />
-            </div>
-          ) : (
-            <MagicCard surface="dark" className="rounded-3xl p-px">
-              <div className="bg-background rounded-[calc(1.5rem-1px)] px-4 py-10 sm:px-8 sm:py-12">
-                <HeadlineBlock />
-              </div>
-            </MagicCard>
-          )}
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-4 xl:gap-8">
+          <div className="max-w-xl text-left">
+            <h1 className="text-[2rem] leading-[1.08] font-normal tracking-tight sm:text-5xl lg:text-[3.25rem] lg:leading-[1.06] xl:text-[3.5rem]">
+              <Trans
+                i18nKey="hero.title"
+                components={{ 1: <span className="font-bold" /> }}
+              />
+            </h1>
+
+            {/* Hidden until a projects section exists */}
+            <a
+              href="#about"
+              aria-label={t("hero.ctaAria")}
+              className="hidden"
+              tabIndex={-1}
+            >
+              {t("hero.cta")}
+            </a>
+          </div>
+
+          <HeroVisual className="lg:justify-self-end" />
         </div>
       </div>
     </section>
   );
 }
 
-function HeadlineBlock() {
-  const { t } = useTranslation();
-
+function HeroVisual({ className }: { className?: string }) {
   return (
-    <>
-      <h1 className="text-foreground text-4xl leading-[1.05] font-semibold tracking-tight sm:text-5xl md:text-6xl">
-        {t("hero.title")}
-      </h1>
-      <p className="text-muted-foreground mx-auto mt-5 max-w-xl text-balance text-base md:text-lg">
-        {t("hero.subtitle")}
-      </p>
-    </>
+    <div
+      className={cn(
+        "relative mx-auto flex h-[min(52vh,460px)] w-full max-w-lg items-center justify-center overflow-visible lg:mx-0 lg:-mr-6 lg:h-[min(78vh,680px)] lg:max-w-none xl:-mr-12",
+        className,
+      )}
+    >
+      <HeroLottie className="h-full w-full" />
+    </div>
   );
 }

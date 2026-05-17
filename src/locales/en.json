@@ -8,10 +8,11 @@
 		"mainMenu": "Main menu",
 		"logoAlt": "Gravity Studios Logo"
 	},
-	"hero": {
-		"title": "Your digital presence, delivered",
-		"subtitle": "A focused studio for fast, accessible marketing sites—strategy, design, and implementation in one lane."
-	},
+  "hero": {
+    "title": "We design digital experiences that <1>help grow</1> modern brands.",
+    "cta": "View projects",
+    "ctaAria": "View our projects"
+  },
 	"about": {
 		"title": "Who we are",
 		"paragraph1": "At Gravity Studios we build modern websites and web apps that help businesses look professional, attract clients, and grow online. We focus on clean design, smooth user experience, and reliable development. Whether you need a simple landing page, a business website, or a custom web application, our goal is to create digital solutions that feel polished, fast, and easy to use. We believe your website should do more than just exist — it should represent your brand, build trust, and turn visitors into customers. From concept to launch, Gravity Studios helps bring your ideas into orbit.",
@@ -46,7 +47,7 @@
 					"SEO optimization"
 				]
 			},
-			"commercial": {
+			"custom": {
 				"title": "Custom website package",
 				"subtitle": "Ideal for e-commerce—stores, hotels, bookings, and appointment payments",
 				"features": [
