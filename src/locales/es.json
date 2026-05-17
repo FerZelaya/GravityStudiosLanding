@@ -9,8 +9,9 @@
 		"logoAlt": "Logo de Gravity Studios"
 	},
 	"hero": {
-		"title": "Tu presencia digital, mejorada",
-		"subtitle": "Un estudio enfocado en sitios de marketing rápidos y accesibles—estrategia, diseño e implementación en un solo lugar."
+		"title": "Diseñamos experiencias digitales que <1>hacen crecer</1> marcas modernas.",
+		"cta": "Ver proyectos",
+		"ctaAria": "Ver nuestros proyectos"
 	},
 	"about": {
 		"title": "Quiénes somos",
@@ -46,7 +47,7 @@
 					"Optimización SEO"
 				]
 			},
-			"commercial": {
+			"custom": {
 				"title": "Paquete web personalizado",
 				"subtitle": "Ideal para e-commerce: tiendas, hoteles, reservas y pagos de citas",
 				"features": [

@@ -20,6 +20,12 @@ export type GradientBorderLinkProps = {
   innerMaskClassName?: string;
   /** First layer of the border trick; use `var(--popover)` inside the sheet */
   outerFill?: string;
+  /** Override theme-based hover/border behavior (e.g. navbar over dark hero) */
+  surface?: "dark" | "light";
+  /** Label text classes; defaults to muted/foreground pair */
+  textClassName?: string;
+  /** Radial gradient edge color (default `var(--border)`); use `transparent` for ghost nav */
+  borderStopColor?: string;
 } & Pick<
   React.ComponentPropsWithoutRef<"a">,
   | "href"
@@ -47,6 +53,9 @@ export const GradientBorderLink = React.forwardRef<
     gradientSize = 140,
     innerMaskClassName = "bg-background",
     outerFill = "var(--background)",
+    surface: surfaceProp,
+    textClassName,
+    borderStopColor = "var(--border)",
     href,
     onClick,
     id,
@@ -67,11 +76,17 @@ export const GradientBorderLink = React.forwardRef<
     () => false,
   );
 
-  const darkSurface = React.useMemo(() => {
+  const isDarkTheme = React.useMemo(() => {
     if (!mounted) return false;
     const t = theme === "system" ? systemTheme : theme;
     return t === "dark";
   }, [theme, systemTheme, mounted]);
+
+  const darkSurface = React.useMemo(() => {
+    if (surfaceProp === "light") return false;
+    if (surfaceProp === "dark") return true;
+    return isDarkTheme;
+  }, [surfaceProp, isDarkTheme]);
 
   const hoverCenter = darkSurface
     ? "rgba(255, 255, 255, 0.18)"
@@ -131,7 +146,7 @@ export const GradientBorderLink = React.forwardRef<
           radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
             ${BORDER_FROM},
             ${BORDER_TO},
-            var(--border) 100%
+            ${borderStopColor} 100%
           ) border-box
         `,
       }}
@@ -156,7 +171,13 @@ export const GradientBorderLink = React.forwardRef<
           opacity: hoverOpacity,
         }}
       />
-      <span className="text-muted-foreground group-hover:text-foreground relative z-40 rounded-[inherit] px-2 py-1 text-sm font-medium transition-colors">
+      <span
+        className={cn(
+          "relative z-40 rounded-[inherit] px-2 py-1 text-sm font-medium transition-colors",
+          textClassName ??
+            "text-muted-foreground group-hover:text-foreground",
+        )}
+      >
         {children}
       </span>
     </motion.a>
