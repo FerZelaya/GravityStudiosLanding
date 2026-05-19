@@ -13,15 +13,14 @@ export function HeroLottieFallback({ className }: HeroLottieFallbackProps) {
   return (
     <div
       className={cn(
-        "relative flex h-[min(52vh,480px)] w-[min(52vh,480px)] items-center justify-center",
-        "lg:h-[min(64vh,560px)] lg:w-[min(64vh,560px)]",
+        "relative flex h-full w-full items-center justify-center",
         className,
       )}
       aria-hidden
     >
       <div className="absolute inset-[12%] rounded-full bg-zinc-400/10 blur-3xl" />
       <motion.div
-        className="relative h-[58%] w-[58%] rounded-full bg-gradient-to-br from-zinc-600 via-zinc-900 to-black shadow-[0_0_80px_rgba(255,255,255,0.08)]"
+        className="relative aspect-square w-[58%] rounded-full bg-gradient-to-br from-zinc-600 via-zinc-900 to-black shadow-[0_0_80px_rgba(255,255,255,0.08)]"
         animate={reduceMotion ? undefined : { scale: [1, 1.03, 1] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -29,11 +28,10 @@ export function HeroLottieFallback({ className }: HeroLottieFallbackProps) {
         className="pointer-events-none absolute inset-0 flex items-center justify-center"
         style={{ transform: "rotate(-22deg)" }}
       >
-        <motion.div
-          className="h-[78%] w-[95%] rounded-[50%] border border-zinc-500/40"
-          animate={reduceMotion ? undefined : { opacity: [0.35, 0.65, 0.35] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        />
+        <div className="absolute aspect-[2.85/1] w-[98%] rounded-[50%] border border-zinc-500/60" />
+        <div className="absolute aspect-[2.75/1] w-[88%] rounded-[50%] border border-zinc-500/60" />
+        <div className="absolute aspect-[2.65/1] w-[78%] rounded-[50%] border border-zinc-500/60" />
+        <div className="absolute aspect-[2.55/1] w-[68%] rounded-[50%] border border-zinc-500/60" />
       </div>
       {!reduceMotion && (
         <motion.div

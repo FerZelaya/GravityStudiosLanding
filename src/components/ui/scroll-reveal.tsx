@@ -1,17 +1,13 @@
-import type { ReactNode } from "react";
+import { useMemo, type ReactNode } from "react";
 import {
   motion,
   useReducedMotion,
   type Variants,
+  type ViewportOptions,
 } from "motion/react";
 
+import { useIsMobile } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";
-
-const defaultViewport = {
-  once: true,
-  amount: 0.15,
-  margin: "0px 0px -8% 0px" as const,
-};
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -33,6 +29,33 @@ export const scrollRevealItemVariants: Variants = {
     transition: { duration: 0.55, ease },
   },
 };
+
+function useScrollRevealViewport(options?: { forGroup?: boolean }): ViewportOptions {
+  const isMobile = useIsMobile();
+  const forGroup = options?.forGroup ?? false;
+
+  return useMemo(
+    () =>
+      isMobile
+        ? {
+            once: true,
+            // Tall stacked sections (e.g. pricing cards): trigger as soon as any part enters
+            amount: forGroup ? ("some" as const) : 0.06,
+            margin: "0px 0px 12% 0px",
+          }
+        : {
+            once: true,
+            amount: forGroup ? 0.12 : 0.15,
+            margin: "0px 0px -8% 0px",
+          },
+    [isMobile, forGroup],
+  );
+}
+
+function useScrollRevealOffset(defaultY: number) {
+  const isMobile = useIsMobile();
+  return isMobile ? Math.min(defaultY, 16) : defaultY;
+}
 
 type ScrollRevealAs = "div" | "article";
 
@@ -58,6 +81,7 @@ export function ScrollRevealGroup({
   className,
 }: ScrollRevealGroupProps) {
   const prefersReducedMotion = useReducedMotion();
+  const viewport = useScrollRevealViewport({ forGroup: true });
 
   if (prefersReducedMotion) {
     return <div className={className}>{children}</div>;
@@ -68,7 +92,7 @@ export function ScrollRevealGroup({
       className={className}
       initial="hidden"
       whileInView="show"
-      viewport={defaultViewport}
+      viewport={viewport}
       variants={scrollRevealContainerVariants}
     >
       {children}
@@ -80,11 +104,13 @@ export function ScrollReveal({
   children,
   className,
   delay = 0,
-  y = 24,
+  y: yProp = 24,
   as = "div",
   staggerItem = false,
 }: ScrollRevealProps) {
   const prefersReducedMotion = useReducedMotion();
+  const viewport = useScrollRevealViewport();
+  const y = useScrollRevealOffset(yProp);
 
   const itemVariants: Variants = {
     hidden: { opacity: 0, y },
@@ -110,7 +136,7 @@ export function ScrollReveal({
       : {
           initial: { opacity: 0, y },
           whileInView: { opacity: 1, y: 0 },
-          viewport: defaultViewport,
+          viewport,
           transition: { duration: 0.55, ease, delay },
         }),
   };

@@ -94,7 +94,9 @@
 				}
 			},
 			"submit": "Enviar mensaje",
-			"success": "Gracias — te responderemos lo antes posible."
+			"submitting": "Enviando…",
+			"success": "Gracias — te responderemos lo antes posible.",
+			"error": "No pudimos enviar tu mensaje. Inténtalo de nuevo en un momento."
 		},
 		"countries": {
 			"hn": "Honduras (+504)",
