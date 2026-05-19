@@ -16,6 +16,7 @@ import {
 import { ScrollReveal, ScrollRevealGroup } from "@/components/ui/scroll-reveal";
 import { Textarea } from "@/components/ui/textarea";
 import { countryDialOptions } from "@/content/contact";
+import { submitContactForm } from "@/lib/contact-api";
 import { cn } from "@/lib/utils";
 
 const iconWrap =
@@ -24,17 +25,44 @@ const iconWrap =
 export function Contact() {
   const { t } = useTranslation();
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [dialCode, setDialCode] = useState<string>(countryDialOptions[0].value);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitError(null);
+    setIsSubmitting(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      await submitContactForm({
+        name: String(formData.get("name") ?? ""),
+        email: String(formData.get("email") ?? ""),
+        phone: String(formData.get("phone") ?? ""),
+        countryCode: dialCode,
+        message: String(formData.get("message") ?? ""),
+      });
+      setSubmitted(true);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : null;
+      setSubmitError(
+        import.meta.env.DEV &&
+          message?.includes("VITE_FORMSPREE_FORM_ID")
+          ? message
+          : t("contact.form.error"),
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
     <section
       id="contact"
-      className="dark bg-background text-foreground scroll-mt-24 border-t border-border/60 py-20 md:scroll-mt-28"
+      className="dark bg-background text-foreground scroll-mt-24 border-t border-border/60 py-16 sm:py-20 md:scroll-mt-28"
     >
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <ScrollRevealGroup className="grid gap-10 md:grid-cols-2 md:gap-4">
@@ -123,9 +151,7 @@ export function Contact() {
                         inputMode="tel"
                         required
                         autoComplete="tel"
-                        placeholder={t(
-                          "contact.form.fields.phone.placeholder",
-                        )}
+                        placeholder={t("contact.form.fields.phone.placeholder")}
                         className="bg-background h-10"
                       />
                     </div>
@@ -153,18 +179,27 @@ export function Contact() {
                       name="message"
                       required
                       rows={5}
-                      placeholder={t(
-                        "contact.form.fields.message.placeholder",
-                      )}
+                      placeholder={t("contact.form.fields.message.placeholder")}
                       className="bg-background min-h-[8rem] resize-y"
                     />
                   </div>
+                  {submitError ? (
+                    <p
+                      className="text-destructive text-center text-sm"
+                      role="alert"
+                    >
+                      {submitError}
+                    </p>
+                  ) : null}
                   <Button
                     type="submit"
                     variant="outline"
+                    disabled={isSubmitting}
                     className="h-11 w-full rounded-xl border-border hover:bg-muted sm:w-auto sm:self-center"
                   >
-                    {t("contact.form.submit")}
+                    {isSubmitting
+                      ? t("contact.form.submitting")
+                      : t("contact.form.submit")}
                   </Button>
                 </form>
               )}

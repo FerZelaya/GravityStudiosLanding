@@ -3,7 +3,6 @@ import Lottie from "lottie-react";
 
 import heroOrbit from "@/assets/lottie/hero-orbit.json";
 import { HeroLottieFallback } from "@/components/landing/HeroLottieFallback";
-import { cn } from "@/lib/utils";
 
 type HeroLottiePlayerProps = {
   reducedMotion?: boolean;
@@ -38,21 +37,19 @@ class LottieErrorBoundary extends Component<
 export function HeroLottiePlayer({ reducedMotion }: HeroLottiePlayerProps) {
   return (
     <LottieErrorBoundary>
-      <Lottie
-        animationData={heroOrbit}
-        loop={false}
-        autoplay={!reducedMotion}
-        className={cn(
-          "relative z-10 h-[min(52vh,480px)] w-[min(52vh,480px)] max-w-none",
-          "bg-transparent lg:h-[min(64vh,560px)] lg:w-[min(64vh,560px)]",
-          "[&_svg]:bg-transparent",
-        )}
-        style={{ background: "transparent" }}
-        rendererSettings={{
-          preserveAspectRatio: "xMidYMid meet",
-        }}
-        aria-hidden
-      />
+      <div className="relative z-10 flex size-full items-center justify-center">
+        <Lottie
+          animationData={heroOrbit}
+          loop={false}
+          autoplay={!reducedMotion}
+          className="size-full max-h-full max-w-full bg-transparent [&_svg]:max-h-full [&_svg]:max-w-full [&_svg]:bg-transparent"
+          style={{ background: "transparent" }}
+          rendererSettings={{
+            preserveAspectRatio: "xMidYMid meet",
+          }}
+          aria-hidden
+        />
+      </div>
     </LottieErrorBoundary>
   );
 }

@@ -8,7 +8,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="dark bg-background text-foreground scroll-mt-24 border-t border-border/60 py-20 md:scroll-mt-28"
+      className="dark bg-background text-foreground scroll-mt-24 border-t border-border/60 py-16 sm:py-20 md:scroll-mt-28"
     >
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <ScrollReveal>
