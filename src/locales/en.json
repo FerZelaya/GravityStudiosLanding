@@ -2,21 +2,71 @@
 	"nav": {
 		"home": "Home",
 		"about": "About",
+		"benefits": "Benefits",
 		"plans": "Plans",
+		"clients": "Clients",
 		"contact": "Contact",
 		"openMenu": "Open menu",
 		"mainMenu": "Main menu",
 		"logoAlt": "Gravity Studios Logo"
 	},
-  "hero": {
-    "title": "We design digital experiences that <1>help grow</1> modern brands.",
-    "cta": "View projects",
-    "ctaAria": "View our projects"
-  },
+	"hero": {
+		"title": "We design digital experiences that <1>help grow</1> modern brands.",
+		"cta": "View projects",
+		"ctaAria": "View our projects"
+	},
 	"about": {
 		"title": "Who we are",
 		"paragraph1": "At Gravity Studios we build modern websites and web apps that help businesses look professional, attract clients, and grow online. We focus on clean design, smooth user experience, and reliable development. Whether you need a simple landing page, a business website, or a custom web application, our goal is to create digital solutions that feel polished, fast, and easy to use. We believe your website should do more than just exist — it should represent your brand, build trust, and turn visitors into customers. From concept to launch, Gravity Studios helps bring your ideas into orbit.",
 		"paragraph2": "Whether you are validating a new offer or refreshing an established brand, we keep the process transparent—fixed scopes, visible progress, and performance-minded frontends by default."
+	},
+	"benefits": {
+		"eyebrow": "Why Gravity Studios",
+		"title": "Design and development with purpose",
+		"description": "Every project reflects our commitment to quality, speed, and results that help your brand grow online.",
+		"items": {
+			"design": {
+				"title": "Modern design",
+				"description": "Clean, attractive interfaces aligned with your brand identity to make a strong first impression."
+			},
+			"responsive": {
+				"title": "Fully responsive",
+				"description": "Websites that look great on any device — mobile, tablet, or desktop."
+			},
+			"performance": {
+				"title": "Fast performance",
+				"description": "Quick load times, smooth animations, and optimized tech so you never lose visitors."
+			},
+			"seo": {
+				"title": "SEO optimized",
+				"description": "Solid technical and content best practices so your site shows up on Google."
+			},
+			"support": {
+				"title": "Hands-on support",
+				"description": "Close collaboration during the project and ongoing care after launch."
+			},
+			"tech": {
+				"title": "Modern technology",
+				"description": "We build with current, secure frameworks ready to scale with your business."
+			}
+		}
+	},
+	"clients": {
+		"eyebrow": "Our clients",
+		"title": "Brands that trust us",
+		"description": "We work side-by-side with every client to ship polished digital products built to scale.",
+		"viewProject": "View site",
+		"santiso": {
+			"name": "Santiso",
+			"tag": "Artisanal preserves",
+			"description": "Bilingual website for an artisanal jams and preserves brand. Warm, natural design with product showcase, wholesale section, and an integrated contact form that drives WhatsApp orders.",
+			"highlights": {
+				"design": "Warm, artisanal visual identity",
+				"sections": "Products, wholesale, and contact",
+				"i18n": "Spanish and English support"
+			},
+			"imageAlt": "Santiso website mockup on a MacBook"
+		}
 	},
 	"pricing": {
 		"eyebrow": "Pricing",
@@ -93,7 +143,7 @@
 					"placeholder": "Tell us about your project"
 				}
 			},
-			"submit": "Send message",
+			"submit": "Send email",
 			"submitting": "Sending…",
 			"success": "Thanks — we will get back to you as soon as possible.",
 			"error": "We could not send your message. Please try again in a moment."

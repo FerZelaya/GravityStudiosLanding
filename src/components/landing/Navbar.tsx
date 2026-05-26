@@ -20,7 +20,9 @@ const SCROLL_THRESHOLD = 12;
 const linkKeys = [
   { href: "#home", key: "nav.home" },
   { href: "#about", key: "nav.about" },
+  { href: "#benefits", key: "nav.benefits" },
   { href: "#pricing", key: "nav.plans" },
+  { href: "#clients", key: "nav.clients" },
   { href: "#contact", key: "nav.contact" },
 ] as const;
 

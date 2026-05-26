@@ -2,7 +2,9 @@
 	"nav": {
 		"home": "Inicio",
 		"about": "Nosotros",
+		"benefits": "Beneficios",
 		"plans": "Planes",
+		"clients": "Clientes",
 		"contact": "Contacto",
 		"openMenu": "Abrir menú",
 		"mainMenu": "Menú principal",
@@ -17,6 +19,54 @@
 		"title": "Quiénes somos",
 		"paragraph1": "En Gravity Studios creamos sitios web y aplicaciones modernas que ayudan a las empresas a verse profesionales, atraer clientes y crecer en línea. Nos enfocamos en diseño limpio, experiencia de usuario fluida y desarrollo confiable. Ya sea que necesites una landing page simple, un sitio corporativo o una aplicación web a medida, nuestro objetivo es crear soluciones digitales pulidas, rápidas y fáciles de usar. Creemos que tu sitio debe hacer más que existir: debe representar tu marca, generar confianza y convertir visitantes en clientes. Del concepto al lanzamiento, Gravity Studios ayuda a llevar tus ideas al espacio.",
 		"paragraph2": "Ya sea que estés validando una nueva oferta o renovando una marca establecida, mantenemos el proceso transparente—alcances definidos, progreso visible y frontends optimizados por defecto."
+	},
+	"benefits": {
+		"eyebrow": "Por qué Gravity Studios",
+		"title": "Diseño y desarrollo con propósito",
+		"description": "Cada proyecto refleja nuestro compromiso con la calidad, la velocidad y resultados que ayudan a tu marca a crecer en línea.",
+		"items": {
+			"design": {
+				"title": "Diseño moderno",
+				"description": "Interfaces limpias y atractivas, alineadas a la identidad de tu marca para causar una gran primera impresión."
+			},
+			"responsive": {
+				"title": "100% responsivo",
+				"description": "Sitios que se ven perfectos en cualquier dispositivo: móvil, tablet o escritorio."
+			},
+			"performance": {
+				"title": "Rendimiento rápido",
+				"description": "Carga veloz, animaciones fluidas y tecnología optimizada para no perder visitantes."
+			},
+			"seo": {
+				"title": "Optimizado para SEO",
+				"description": "Buenas prácticas técnicas y de contenido para que tu sitio sea encontrado en Google."
+			},
+			"support": {
+				"title": "Soporte cercano",
+				"description": "Acompañamiento durante todo el proyecto y atención continua después del lanzamiento."
+			},
+			"tech": {
+				"title": "Tecnología actual",
+				"description": "Construimos con frameworks modernos, seguros y preparados para escalar con tu negocio."
+			}
+		}
+	},
+	"clients": {
+		"eyebrow": "Nuestros clientes",
+		"title": "Marcas que confían en nosotros",
+		"description": "Trabajamos de la mano con cada cliente para crear productos digitales pulidos, listos para escalar.",
+		"viewProject": "Ver sitio",
+		"santiso": {
+			"name": "Santiso",
+			"tag": "Conservas artesanales",
+			"description": "Sitio web bilingüe para una marca de mermeladas y conservas artesanales. Diseño cálido y natural, sección de productos, ventas al por mayor y formulario de contacto integrado para pedidos por WhatsApp.",
+			"highlights": {
+				"design": "Identidad visual cálida y artesanal",
+				"sections": "Productos, mayoristas y contacto",
+				"i18n": "Soporte para español e inglés"
+			},
+			"imageAlt": "Mockup del sitio web de Santiso en una MacBook"
+		}
 	},
 	"pricing": {
 		"eyebrow": "Precios",
@@ -93,7 +143,7 @@
 					"placeholder": "Cuéntanos sobre tu proyecto"
 				}
 			},
-			"submit": "Enviar mensaje",
+			"submit": "Enviar correo",
 			"submitting": "Enviando…",
 			"success": "Gracias — te responderemos lo antes posible.",
 			"error": "No pudimos enviar tu mensaje. Inténtalo de nuevo en un momento."

@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/ui/button";
@@ -65,14 +65,14 @@ export function Contact() {
       className="dark bg-background text-foreground scroll-mt-24 border-t border-border/60 py-16 sm:py-20 md:scroll-mt-28"
     >
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
-        <ScrollRevealGroup className="grid gap-10 md:grid-cols-2 md:gap-4">
-          <ScrollReveal staggerItem>
+        <ScrollRevealGroup className="grid gap-10 md:grid-cols-1 md:gap-4">
+          {/* <ScrollReveal staggerItem>
             <ContactChip
               icon={<Phone className="size-5" aria-hidden />}
               label={t("contact.phone.label")}
               value={t("contact.phone.value")}
             />
-          </ScrollReveal>
+          </ScrollReveal> */}
           <ScrollReveal staggerItem>
             <ContactChip
               icon={<Mail className="size-5" aria-hidden />}

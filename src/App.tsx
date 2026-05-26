@@ -1,4 +1,6 @@
 import { About } from "@/components/landing/About";
+import { Benefits } from "@/components/landing/Benefits";
+import { Clients } from "@/components/landing/Clients";
 import { Contact } from "@/components/landing/Contact";
 import { Footer } from "@/components/landing/Footer";
 import { Hero } from "@/components/landing/Hero";
@@ -12,7 +14,9 @@ function App() {
       <main>
         <Hero />
         <About />
+        <Benefits />
         <Pricing />
+        <Clients />
         <Contact />
       </main>
       <Footer />
