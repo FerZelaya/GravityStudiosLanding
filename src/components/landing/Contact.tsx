@@ -3,7 +3,7 @@ import { Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { GlassCard } from "@/components/ui/glass-card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -13,14 +13,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ScrollReveal, ScrollRevealGroup } from "@/components/ui/scroll-reveal";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { Textarea } from "@/components/ui/textarea";
 import { countryDialOptions } from "@/content/contact";
 import { submitContactForm } from "@/lib/contact-api";
-import { cn } from "@/lib/utils";
-
-const iconWrap =
-  "bg-foreground text-background flex size-12 items-center justify-center rounded-full shadow-sm ring-1 ring-border";
 
 export function Contact() {
   const { t } = useTranslation();
@@ -49,8 +46,7 @@ export function Contact() {
     } catch (err) {
       const message = err instanceof Error ? err.message : null;
       setSubmitError(
-        import.meta.env.DEV &&
-          message?.includes("VITE_FORMSPREE_FORM_ID")
+        import.meta.env.DEV && message?.includes("VITE_FORMSPREE_FORM_ID")
           ? message
           : t("contact.form.error"),
       );
@@ -62,36 +58,38 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="dark bg-background text-foreground scroll-mt-24 border-t border-border/60 py-16 sm:py-20 md:scroll-mt-28"
+      className="relative scroll-mt-24 overflow-hidden border-t border-white/5 bg-[#0a0a0a] py-20 sm:py-24 md:scroll-mt-28"
     >
-      <div className="mx-auto max-w-4xl px-4 sm:px-6">
-        <ScrollRevealGroup className="grid gap-10 md:grid-cols-1 md:gap-4">
-          {/* <ScrollReveal staggerItem>
-            <ContactChip
-              icon={<Phone className="size-5" aria-hidden />}
-              label={t("contact.phone.label")}
-              value={t("contact.phone.value")}
-            />
-          </ScrollReveal> */}
-          <ScrollReveal staggerItem>
-            <ContactChip
-              icon={<Mail className="size-5" aria-hidden />}
-              label={t("contact.email.label")}
-              value={t("contact.email.value")}
-            />
-          </ScrollReveal>
-        </ScrollRevealGroup>
+      <div
+        className="pointer-events-none absolute bottom-0 left-1/2 h-72 w-[min(90%,700px)] -translate-x-1/2 rounded-full bg-white/[0.06] blur-[110px]"
+        aria-hidden
+      />
 
-        <ScrollReveal delay={0.12} className="mt-12 block">
-          <Card className="rounded-3xl border-border/80 shadow-sm">
-            <CardHeader>
-              <CardTitle className="text-xl font-semibold">
-                {t("contact.form.title")}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
+      <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6">
+        <ScrollReveal>
+          <SectionHeading
+            eyebrow={t("contact.eyebrow")}
+            title={t("contact.headline")}
+            description={t("contact.subheadline")}
+          />
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.08} className="mt-8 flex justify-center">
+          <ContactChip
+            icon={<Mail className="size-5" aria-hidden />}
+            label={t("contact.email.label")}
+            value={t("contact.email.value")}
+          />
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.12} className="mt-10 block sm:mt-12">
+          <GlassCard glow className="p-6 sm:p-8">
+            <h3 className="font-heading text-xl font-semibold text-white">
+              {t("contact.form.title")}
+            </h3>
+            <div className="mt-6">
               {submitted ? (
-                <p className="text-muted-foreground py-6 text-center text-sm">
+                <p className="py-6 text-center text-sm text-white/60">
                   {t("contact.form.success")}
                 </p>
               ) : (
@@ -103,7 +101,7 @@ export function Contact() {
                     readOnly
                   />
                   <div className="space-y-2">
-                    <Label htmlFor="contact-name">
+                    <Label htmlFor="contact-name" className="text-white/70">
                       {t("contact.form.fields.name.label")}
                     </Label>
                     <Input
@@ -112,18 +110,18 @@ export function Contact() {
                       required
                       autoComplete="name"
                       placeholder={t("contact.form.fields.name.placeholder")}
-                      className="bg-background h-10"
+                      className="h-11 border-white/10 bg-white/[0.04] text-white placeholder:text-white/30"
                     />
                   </div>
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div className="space-y-2">
-                      <Label htmlFor="contact-dial">
+                      <Label htmlFor="contact-dial" className="text-white/70">
                         {t("contact.form.fields.countryCode.label")}
                       </Label>
                       <Select value={dialCode} onValueChange={setDialCode}>
                         <SelectTrigger
                           id="contact-dial"
-                          className="w-full bg-background"
+                          className="w-full border-white/10 bg-white/[0.04] text-white"
                         >
                           <SelectValue
                             placeholder={t(
@@ -131,7 +129,7 @@ export function Contact() {
                             )}
                           />
                         </SelectTrigger>
-                        <SelectContent className="dark">
+                        <SelectContent className="dark border-white/10 bg-[#141414] text-white">
                           {countryDialOptions.map((opt) => (
                             <SelectItem key={opt.value} value={opt.value}>
                               {t(`contact.countries.${opt.countryKey}`)}
@@ -141,7 +139,7 @@ export function Contact() {
                       </Select>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="contact-phone">
+                      <Label htmlFor="contact-phone" className="text-white/70">
                         {t("contact.form.fields.phone.label")}
                       </Label>
                       <Input
@@ -152,12 +150,12 @@ export function Contact() {
                         required
                         autoComplete="tel"
                         placeholder={t("contact.form.fields.phone.placeholder")}
-                        className="bg-background h-10"
+                        className="h-11 border-white/10 bg-white/[0.04] text-white placeholder:text-white/30"
                       />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="contact-email">
+                    <Label htmlFor="contact-email" className="text-white/70">
                       {t("contact.form.fields.email.label")}
                     </Label>
                     <Input
@@ -167,11 +165,11 @@ export function Contact() {
                       required
                       autoComplete="email"
                       placeholder={t("contact.form.fields.email.placeholder")}
-                      className="bg-background h-10"
+                      className="h-11 border-white/10 bg-white/[0.04] text-white placeholder:text-white/30"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="contact-message">
+                    <Label htmlFor="contact-message" className="text-white/70">
                       {t("contact.form.fields.message.label")}
                     </Label>
                     <Textarea
@@ -180,22 +178,18 @@ export function Contact() {
                       required
                       rows={5}
                       placeholder={t("contact.form.fields.message.placeholder")}
-                      className="bg-background min-h-[8rem] resize-y"
+                      className="min-h-[8rem] resize-y border-white/10 bg-white/[0.04] text-white placeholder:text-white/30"
                     />
                   </div>
                   {submitError ? (
-                    <p
-                      className="text-destructive text-center text-sm"
-                      role="alert"
-                    >
+                    <p className="text-center text-sm text-red-400" role="alert">
                       {submitError}
                     </p>
                   ) : null}
                   <Button
                     type="submit"
-                    variant="outline"
                     disabled={isSubmitting}
-                    className="h-11 w-full rounded-xl border-border hover:bg-muted sm:w-auto sm:self-center"
+                    className="h-11 w-full rounded-full bg-white text-black hover:bg-white/90 sm:w-auto sm:self-center sm:px-8"
                   >
                     {isSubmitting
                       ? t("contact.form.submitting")
@@ -203,8 +197,8 @@ export function Contact() {
                   </Button>
                 </form>
               )}
-            </CardContent>
-          </Card>
+            </div>
+          </GlassCard>
         </ScrollReveal>
       </div>
     </section>
@@ -222,11 +216,13 @@ function ContactChip({
 }) {
   return (
     <div className="flex flex-col items-center text-center">
-      <div className={cn(iconWrap)}>{icon}</div>
-      <p className="text-muted-foreground mt-3 text-xs font-medium tracking-wide uppercase">
+      <div className="flex size-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white">
+        {icon}
+      </div>
+      <p className="mt-3 text-xs font-medium tracking-wide text-white/45 uppercase">
         {label}
       </p>
-      <p className="text-foreground mt-1 text-sm font-medium">{value}</p>
+      <p className="mt-1 text-sm font-medium text-white">{value}</p>
     </div>
   );
 }

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Menu } from "lucide-react";
+import { ArrowRight, Menu } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import logoNavbar from "@/assets/gravity-logo-navbar-4.png";
-import { GradientBorderLink } from "@/components/ui/gradient-border-link";
+import { LanguageToggle } from "@/components/LanguageToggle";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -18,12 +18,11 @@ import { cn } from "@/lib/utils";
 const SCROLL_THRESHOLD = 12;
 
 const linkKeys = [
-  { href: "#home", key: "nav.home" },
-  { href: "#about", key: "nav.about" },
-  { href: "#benefits", key: "nav.benefits" },
-  { href: "#pricing", key: "nav.plans" },
-  { href: "#clients", key: "nav.clients" },
-  { href: "#contact", key: "nav.contact" },
+  { href: "#services", key: "nav.services" },
+  { href: "#process", key: "nav.process" },
+  { href: "#work", key: "nav.work" },
+  { href: "#pricing", key: "nav.pricing" },
+  { href: "#faq", key: "nav.faq" },
 ] as const;
 
 function useNavbarScrolled() {
@@ -41,79 +40,29 @@ function useNavbarScrolled() {
   return isScrolled;
 }
 
-function Logo({
-  className,
-  isScrolled,
-}: {
-  className?: string;
-  isScrolled: boolean;
-}) {
+function Logo({ className }: { className?: string }) {
   const { t } = useTranslation();
 
   return (
     <a
       href="#home"
       className={cn(
-        "flex items-center gap-2.5 font-semibold tracking-tight transition-colors",
-        isScrolled ? "text-foreground" : "text-white",
+        "flex items-center gap-2.5 font-semibold tracking-tight text-white transition-opacity hover:opacity-90",
         className,
       )}
     >
       <img
         src={logoNavbar}
         alt={t("nav.logoAlt")}
-        className={cn(
-          "h-10 w-10 shrink-0 object-cover transition-[filter] duration-300 md:h-12 md:w-12",
-          !isScrolled && "brightness-0 invert",
-        )}
-        width={50}
-        height={50}
+        className="h-9 w-9 shrink-0 object-cover brightness-0 invert md:h-10 md:w-10"
+        width={40}
+        height={40}
         decoding="async"
       />
-      <span className="text-base font-bold md:text-xl">Gravity Studios</span>
+      <span className="font-heading text-base font-bold md:text-lg">
+        Gravity Studios
+      </span>
     </a>
-  );
-}
-
-function NavLinks({
-  className,
-  onLinkClick,
-  isScrolled,
-}: {
-  className?: string;
-  onLinkClick?: () => void;
-  isScrolled: boolean;
-}) {
-  const { t } = useTranslation();
-
-  return (
-    <nav
-      className={cn(
-        "flex flex-col gap-1 md:flex-row md:items-center md:gap-8",
-        className,
-      )}
-    >
-      {linkKeys.map((link) => (
-        <GradientBorderLink
-          key={link.href}
-          href={link.href}
-          onClick={onLinkClick}
-          surface={isScrolled ? "light" : "dark"}
-          outerFill={isScrolled ? "var(--background)" : "transparent"}
-          borderStopColor={isScrolled ? "var(--border)" : "transparent"}
-          innerMaskClassName={
-            isScrolled ? "bg-background" : "bg-transparent"
-          }
-          textClassName={
-            isScrolled
-              ? "text-muted-foreground group-hover:text-foreground"
-              : "text-zinc-100 group-hover:text-white"
-          }
-        >
-          {t(link.key)}
-        </GradientBorderLink>
-      ))}
-    </nav>
   );
 }
 
@@ -122,63 +71,89 @@ export function Navbar() {
   const isScrolled = useNavbarScrolled();
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300",
-        isScrolled
-          ? "border-border/80 bg-background supports-backdrop-filter:backdrop-blur-md"
-          : "border-transparent bg-transparent",
-      )}
-    >
-      <div className="relative mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 md:justify-start">
-        <Logo className="relative z-10 shrink-0" isScrolled={isScrolled} />
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
+      <div
+        className={cn(
+          "mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 rounded-full px-4 transition-all duration-300 sm:h-16 sm:px-5",
+          isScrolled
+            ? "border border-white/10 bg-black/70 shadow-lg shadow-black/40 backdrop-blur-xl"
+            : "border border-transparent bg-transparent",
+        )}
+      >
+        <Logo className="relative z-10 shrink-0" />
 
-        <NavLinks
-          isScrolled={isScrolled}
-          className="absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 md:flex"
-        />
+        <nav className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-1 lg:flex">
+          {linkKeys.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="rounded-full px-3 py-2 text-sm text-white/70 transition-colors hover:bg-white/5 hover:text-white"
+            >
+              {t(link.key)}
+            </a>
+          ))}
+        </nav>
 
-        <div className="ml-auto shrink-0 md:hidden">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                type="button"
-                aria-label={t("nav.openMenu")}
-                className={cn(
-                  "transition-colors",
-                  isScrolled
-                    ? "text-foreground hover:bg-muted"
-                    : "text-white hover:bg-white/10",
-                )}
+        <div className="ml-auto flex items-center gap-2 sm:gap-3">
+          <LanguageToggle className="hidden md:inline-flex" />
+          <Button
+            asChild
+            className="hidden h-10 rounded-full bg-white px-4 text-black hover:bg-white/90 sm:inline-flex"
+          >
+            <a href="#contact" className="inline-flex items-center gap-1.5">
+              {t("nav.cta")}
+              <ArrowRight className="size-4" aria-hidden />
+            </a>
+          </Button>
+
+          <div className="lg:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  type="button"
+                  aria-label={t("nav.openMenu")}
+                  className="text-white hover:bg-white/10"
+                >
+                  <Menu className="size-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent
+                side="right"
+                className="w-[min(100%,20rem)] border-white/10 bg-[#0a0a0a] text-white"
               >
-                <Menu className="size-5" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[min(100%,20rem)]">
-              <SheetHeader>
-                <SheetTitle className="sr-only">{t("nav.mainMenu")}</SheetTitle>
-              </SheetHeader>
-              <div className="flex flex-col gap-6 px-2 pb-6">
-                <Logo isScrolled={true} />
-                <div className="flex flex-col gap-2">
-                  {linkKeys.map((link) => (
-                    <SheetClose asChild key={link.href}>
-                      <GradientBorderLink
-                        href={link.href}
-                        className="w-full justify-center"
-                        innerMaskClassName="bg-popover"
-                        outerFill="var(--popover)"
+                <SheetHeader>
+                  <SheetTitle className="sr-only">{t("nav.mainMenu")}</SheetTitle>
+                </SheetHeader>
+                <div className="flex flex-col gap-6 px-2 pb-6">
+                  <Logo />
+                  <div className="flex flex-col gap-1">
+                    {linkKeys.map((link) => (
+                      <SheetClose asChild key={link.href}>
+                        <a
+                          href={link.href}
+                          className="rounded-xl px-3 py-3 text-base text-white/80 transition-colors hover:bg-white/5 hover:text-white"
+                        >
+                          {t(link.key)}
+                        </a>
+                      </SheetClose>
+                    ))}
+                    <SheetClose asChild>
+                      <a
+                        href="#contact"
+                        className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-medium text-black"
                       >
-                        {t(link.key)}
-                      </GradientBorderLink>
+                        {t("nav.cta")}
+                        <ArrowRight className="size-4" aria-hidden />
+                      </a>
                     </SheetClose>
-                  ))}
+                  </div>
+                  <LanguageToggle />
                 </div>
-              </div>
-            </SheetContent>
-          </Sheet>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>

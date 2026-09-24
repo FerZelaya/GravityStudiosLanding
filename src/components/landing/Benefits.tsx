@@ -9,8 +9,9 @@ import {
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+import { GlassCard } from "@/components/ui/glass-card";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { ScrollReveal, ScrollRevealGroup } from "@/components/ui/scroll-reveal";
-import { cn } from "@/lib/utils";
 
 type BenefitId =
   | "design"
@@ -35,50 +36,33 @@ export function Benefits() {
   return (
     <section
       id="benefits"
-      className="dark bg-background text-foreground scroll-mt-24 border-t border-border/60 py-16 sm:py-20 md:scroll-mt-28"
+      className="relative scroll-mt-24 border-t border-white/5 bg-[#0a0a0a] py-20 sm:py-24 md:scroll-mt-28"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <ScrollReveal className="mx-auto max-w-2xl text-center">
-          <p className="text-muted-foreground text-sm font-medium tracking-wide uppercase">
-            {t("benefits.eyebrow")}
-          </p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
-            {t("benefits.title")}
-          </h2>
-          <p className="text-muted-foreground mt-4 text-pretty">
-            {t("benefits.description")}
-          </p>
+        <ScrollReveal>
+          <SectionHeading
+            eyebrow={t("benefits.eyebrow")}
+            title={t("benefits.title")}
+            description={t("benefits.description")}
+          />
         </ScrollReveal>
 
-        <ScrollRevealGroup
-          className={cn(
-            "mt-12 grid gap-6 sm:mt-16",
-            "sm:grid-cols-2 lg:grid-cols-3",
-          )}
-        >
+        <ScrollRevealGroup className="mt-12 grid gap-4 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3">
           {benefits.map((benefit) => {
             const Icon = benefit.icon;
             return (
-              <ScrollReveal
-                key={benefit.id}
-                as="article"
-                staggerItem
-                className={cn(
-                  "group/card flex flex-col gap-4 rounded-3xl border border-border/80 bg-card p-6 text-left text-card-foreground shadow-none ring-1 ring-foreground/10 transition-colors",
-                  "hover:border-border hover:ring-foreground/20",
-                )}
-              >
-                <div className="bg-muted ring-border flex size-12 items-center justify-center rounded-full ring-1">
-                  <span className="bg-foreground text-background rounded-full p-2.5 shadow-inner">
+              <ScrollReveal key={benefit.id} as="article" staggerItem>
+                <GlassCard className="flex h-full flex-col gap-4 p-6">
+                  <div className="flex size-11 items-center justify-center rounded-xl border border-white/15 bg-white/[0.06] text-white">
                     <Icon className="size-5" aria-hidden />
-                  </span>
-                </div>
-                <h3 className="font-heading text-lg font-semibold leading-snug">
-                  {t(`benefits.items.${benefit.id}.title`)}
-                </h3>
-                <p className="text-muted-foreground text-sm text-pretty leading-relaxed">
-                  {t(`benefits.items.${benefit.id}.description`)}
-                </p>
+                  </div>
+                  <h3 className="font-heading text-lg font-semibold text-white">
+                    {t(`benefits.items.${benefit.id}.title`)}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-white/55">
+                    {t(`benefits.items.${benefit.id}.description`)}
+                  </p>
+                </GlassCard>
               </ScrollReveal>
             );
           })}

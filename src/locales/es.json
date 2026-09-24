@@ -1,24 +1,205 @@
 {
 	"nav": {
 		"home": "Inicio",
-		"about": "Nosotros",
-		"benefits": "Beneficios",
-		"plans": "Planes",
-		"clients": "Clientes",
+		"services": "Servicios",
+		"process": "Proceso",
+		"work": "Trabajos",
+		"pricing": "Precios",
+		"faq": "FAQ",
 		"contact": "Contacto",
+		"cta": "Iniciar proyecto",
 		"openMenu": "Abrir menú",
 		"mainMenu": "Menú principal",
 		"logoAlt": "Logo de Gravity Studios"
 	},
 	"hero": {
-		"title": "Diseñamos experiencias digitales que <1>hacen crecer</1> marcas modernas.",
-		"cta": "Ver proyectos",
-		"ctaAria": "Ver nuestros proyectos"
+		"title": "Productos digitales que <1>ponen tu marca</1> en órbita.",
+		"subtitle": "Gravity Studios diseña y construye sitios web, apps y experiencias digitales modernas — pulidas, rápidas y listas para convertir.",
+		"ctaPrimary": "Iniciar proyecto",
+		"ctaSecondary": "Ver nuestros trabajos"
 	},
-	"about": {
-		"title": "Quiénes somos",
-		"paragraph1": "En Gravity Studios creamos sitios web y aplicaciones modernas que ayudan a las empresas a verse profesionales, atraer clientes y crecer en línea. Nos enfocamos en diseño limpio, experiencia de usuario fluida y desarrollo confiable. Ya sea que necesites una landing page simple, un sitio corporativo o una aplicación web a medida, nuestro objetivo es crear soluciones digitales pulidas, rápidas y fáciles de usar. Creemos que tu sitio debe hacer más que existir: debe representar tu marca, generar confianza y convertir visitantes en clientes. Del concepto al lanzamiento, Gravity Studios ayuda a llevar tus ideas al espacio.",
-		"paragraph2": "Ya sea que estés validando una nueva oferta o renovando una marca establecida, mantenemos el proceso transparente—alcances definidos, progreso visible y frontends optimizados por defecto."
+	"tech": {
+		"title": "Tecnologías con las que construimos"
+	},
+	"bento": {
+		"eyebrow": "Quiénes somos",
+		"title": "Diseñar. Desarrollar. Desplegar.",
+		"description": "En Gravity Studios creamos sitios web y aplicaciones modernas que ayudan a las empresas a verse profesionales, atraer clientes y crecer en línea. Diseño limpio, UX fluida y desarrollo confiable — desde landing pages hasta software a medida.",
+		"pillars": {
+			"design": {
+				"title": "Diseñar",
+				"description": "Interfaces y flujos alineados a tu marca que se sienten claros y premium."
+			},
+			"develop": {
+				"title": "Desarrollar",
+				"description": "Builds rápidos y confiables con frameworks modernos, listos para escalar."
+			},
+			"deploy": {
+				"title": "Desplegar",
+				"description": "Lanzamiento con hosting, SSL y SEO básico, y mejora continua."
+			}
+		},
+		"stats": {
+			"projects": { "value": "40+", "label": "Proyectos lanzados" },
+			"years": { "value": "5+", "label": "Años construyendo" },
+			"uptime": { "value": "99.9%", "label": "Uptime de clientes" },
+			"response": { "value": "<24h", "label": "Tiempo de respuesta" }
+		}
+	},
+	"services": {
+		"eyebrow": "Qué hacemos",
+		"title": "Servicios pensados para crecer",
+		"description": "Del primer boceto al cuidado continuo — todo lo que tu marca necesita en línea.",
+		"items": {
+			"webDesign": {
+				"title": "Diseño web y landings",
+				"description": "Sitios de marketing de alta conversión con visuales modernos y mensajes claros.",
+				"bullets": [
+					"UI a medida y layouts responsivos",
+					"Sistemas visuales alineados a tu marca",
+					"Secciones enfocadas en conversión"
+				],
+				"imageAlt": "Diseñador trabajando en una interfaz web"
+			},
+			"webApps": {
+				"title": "Apps web a medida",
+				"description": "Software adaptado a tus flujos — dashboards, portales y herramientas internas.",
+				"bullets": [
+					"React y stacks modernos",
+					"Auth, APIs e integraciones",
+					"Arquitectura escalable"
+				],
+				"imageAlt": "Código en pantalla de desarrollador"
+			},
+			"ecommerce": {
+				"title": "E-commerce y reservas",
+				"description": "Tiendas online, sistemas de reserva y pagos que venden mientras descansas.",
+				"bullets": [
+					"Listos para Stripe y Shopify",
+					"Catálogos y checkout",
+					"Citas y pagos"
+				],
+				"imageAlt": "Compras y pagos en línea"
+			},
+			"mobile": {
+				"title": "Apps móviles",
+				"description": "Experiencias móviles con sensación nativa para mantener a tus clientes conectados.",
+				"bullets": [
+					"Listas para iOS y Android",
+					"Builds multiplataforma",
+					"Pulido para las tiendas de apps"
+				],
+				"imageAlt": "App móvil en un smartphone"
+			},
+			"branding": {
+				"title": "Branding y UI/UX",
+				"description": "Identidad, interfaz y experiencia que hacen que tu producto se sienta premium.",
+				"bullets": [
+					"Logo e identidad visual",
+					"Sistemas de diseño",
+					"Prototipos y flujos de usuario"
+				],
+				"imageAlt": "Espacio de trabajo de diseño de marca"
+			},
+			"ai": {
+				"title": "IA y automatización",
+				"description": "Chatbots, asistentes y flujos que ahorran tiempo y deleitan a los usuarios.",
+				"bullets": [
+					"Funciones con LLM",
+					"Automatización de procesos",
+					"Herramientas de IA a medida"
+				],
+				"imageAlt": "Inteligencia artificial abstracta"
+			},
+			"seo": {
+				"title": "SEO y rendimiento",
+				"description": "SEO técnico, Core Web Vitals y velocidad para que te encuentren — y se queden.",
+				"bullets": [
+					"Auditorías SEO técnicas",
+					"Optimización de velocidad",
+					"Analytics y tracking"
+				],
+				"imageAlt": "Gráficos de analítica"
+			},
+			"hosting": {
+				"title": "Hosting y mantenimiento",
+				"description": "Hosting administrado, SSL, actualizaciones y soporte para que tu producto siga en línea.",
+				"bullets": [
+					"Hosting administrado y SSL",
+					"Actualizaciones y monitoreo",
+					"Soporte cercano"
+				],
+				"imageAlt": "Infraestructura de servidores"
+			}
+		}
+	},
+	"statement": {
+		"line": "DISEÑAR. DESARROLLAR. ENTREGAR."
+	},
+	"process": {
+		"eyebrow": "Cómo trabajamos",
+		"title": "Un camino claro de la idea al lanzamiento",
+		"description": "Alcances transparentes, progreso visible y builds enfocados en rendimiento en cada paso.",
+		"steps": {
+			"discovery": {
+				"title": "Descubrimiento",
+				"description": "Aclaramos objetivos, audiencia y alcance para que el build se mantenga enfocado."
+			},
+			"design": {
+				"title": "Diseño",
+				"description": "Wireframes y UI pulida que reflejan tu marca y convierten visitantes."
+			},
+			"development": {
+				"title": "Desarrollo",
+				"description": "Código limpio y moderno con carga rápida y bases sólidas."
+			},
+			"launch": {
+				"title": "Lanzamiento",
+				"description": "Despliegue, QA y salida en vivo con SSL, SEO básico y documentación."
+			},
+			"growth": {
+				"title": "Crecimiento",
+				"description": "Iteramos con analytics, SEO y planes de cuidado que mantienen el impulso."
+			}
+		}
+	},
+	"work": {
+		"eyebrow": "Trabajos seleccionados",
+		"title": "Proyectos en órbita",
+		"description": "Trabajo real de clientes y conceptos que muestran cómo pensamos.",
+		"viewProject": "Ver sitio",
+		"conceptBadge": "Concepto",
+		"santiso": {
+			"name": "Santiso",
+			"tag": "Conservas artesanales",
+			"description": "Sitio web bilingüe para una marca de mermeladas y conservas artesanales. Diseño cálido y natural, sección de productos, ventas al por mayor y formulario de contacto integrado para pedidos por WhatsApp.",
+			"highlights": {
+				"design": "Identidad visual cálida y artesanal",
+				"sections": "Productos, mayoristas y contacto",
+				"i18n": "Soporte para español e inglés"
+			},
+			"imageAlt": "Mockup del sitio web de Santiso en una MacBook"
+		},
+		"concepts": {
+			"dashboard": {
+				"name": "Orbit Analytics",
+				"tag": "Dashboard SaaS",
+				"description": "Concepto de producto de analytics en modo oscuro con cards KPI y gráficos limpios.",
+				"imageAlt": "Mockup conceptual de dashboard SaaS"
+			},
+			"ecommerce": {
+				"name": "Nova Store",
+				"tag": "E-commerce",
+				"description": "Concepto de tienda de moda con grillas de producto oscuras y CTAs contundentes.",
+				"imageAlt": "Mockup conceptual de e-commerce"
+			},
+			"mobile": {
+				"name": "Pulse App",
+				"tag": "Producto móvil",
+				"description": "Concepto de experiencia móvil con dispositivo flotante y UI minimalista.",
+				"imageAlt": "Mockup conceptual de app móvil"
+			}
+		}
 	},
 	"benefits": {
 		"eyebrow": "Por qué Gravity Studios",
@@ -51,28 +232,12 @@
 			}
 		}
 	},
-	"clients": {
-		"eyebrow": "Nuestros clientes",
-		"title": "Marcas que confían en nosotros",
-		"description": "Trabajamos de la mano con cada cliente para crear productos digitales pulidos, listos para escalar.",
-		"viewProject": "Ver sitio",
-		"santiso": {
-			"name": "Santiso",
-			"tag": "Conservas artesanales",
-			"description": "Sitio web bilingüe para una marca de mermeladas y conservas artesanales. Diseño cálido y natural, sección de productos, ventas al por mayor y formulario de contacto integrado para pedidos por WhatsApp.",
-			"highlights": {
-				"design": "Identidad visual cálida y artesanal",
-				"sections": "Productos, mayoristas y contacto",
-				"i18n": "Soporte para español e inglés"
-			},
-			"imageAlt": "Mockup del sitio web de Santiso en una MacBook"
-		}
-	},
 	"pricing": {
 		"eyebrow": "Precios",
 		"title": "Paquetes",
 		"description": "Puntos de partida claros para lanzar y escalar.",
 		"cta": "Contáctanos",
+		"popular": "Más popular",
 		"tiers": {
 			"startup": {
 				"title": "Paquete web startup",
@@ -106,7 +271,50 @@
 			}
 		}
 	},
+	"testimonials": {
+		"eyebrow": "Voces de clientes",
+		"title": "Lo que dicen nuestros clientes",
+		"santiso": {
+			"quote": "Gravity Studios creó un sitio bilingüe que realmente refleja nuestra marca artesanal. Es cálido, fácil de navegar y ahora nuestros clientes nos contactan directamente por WhatsApp para hacer pedidos.",
+			"name": "Santiso",
+			"role": "Conservas artesanales"
+		}
+	},
+	"faq": {
+		"eyebrow": "FAQ",
+		"title": "Preguntas, respondidas",
+		"description": "Respuestas directas sobre tiempos, precios y cómo trabajamos.",
+		"items": {
+			"timeline": {
+				"q": "¿Cuánto tarda un proyecto típico?",
+				"a": "Un sitio de marketing simple suele lanzarse en 2–4 semanas. Apps o sitios multi-página toman más según el alcance — te damos un timeline claro antes de empezar."
+			},
+			"pricing": {
+				"q": "¿Qué incluyen los paquetes listados?",
+				"a": "Cada paquete detalla sus funciones arriba. El trabajo a medida se define tras una breve llamada de discovery para que el precio coincida con tus objetivos."
+			},
+			"maintenance": {
+				"q": "¿Ofrecen mantenimiento continuo?",
+				"a": "Sí. Los planes mensuales cubren hosting, SSL, actualizaciones, monitoreo y pequeños cambios de contenido."
+			},
+			"hosting": {
+				"q": "¿Dónde se hospeda mi sitio?",
+				"a": "Proveemos hosting administrado con SSL por defecto. Si ya tienes un host preferido, también podemos desplegar ahí."
+			},
+			"revisions": {
+				"q": "¿Cuántas revisiones de diseño recibo?",
+				"a": "Los paquetes incluyen rondas de revisión estructuradas. Alineamos la política de revisiones en tu propuesta."
+			},
+			"languages": {
+				"q": "¿Pueden construir sitios bilingües?",
+				"a": "Por supuesto. Hemos lanzado experiencias español/inglés (como Santiso) y podemos agregar más idiomas."
+			}
+		}
+	},
 	"contact": {
+		"eyebrow": "Contacto",
+		"headline": "Construyamos tu próximo producto",
+		"subheadline": "Cuéntanos tus objetivos — te responderemos con los siguientes pasos y un camino claro.",
 		"location": {
 			"label": "Ubicación",
 			"value": "Tu ciudad, país"
@@ -117,7 +325,7 @@
 		},
 		"email": {
 			"label": "Correo",
-			"value": "info@gravitystudios.io"
+			"value": "ferzelaya64@gmail.com"
 		},
 		"form": {
 			"title": "Ponte en contacto con nosotros",
@@ -143,7 +351,7 @@
 					"placeholder": "Cuéntanos sobre tu proyecto"
 				}
 			},
-			"submit": "Enviar correo",
+			"submit": "Enviar mensaje",
 			"submitting": "Enviando…",
 			"success": "Gracias — te responderemos lo antes posible.",
 			"error": "No pudimos enviar tu mensaje. Inténtalo de nuevo en un momento."
@@ -157,7 +365,21 @@
 	},
 	"footer": {
 		"copyright": "© 2026 Gravity Studios. Todos los derechos reservados.",
-		"language": "Idioma"
+		"language": "Idioma",
+		"tagline": "Productos digitales que ponen marcas en órbita.",
+		"columns": {
+			"services": "Servicios",
+			"company": "Empresa",
+			"contact": "Contacto"
+		},
+		"links": {
+			"services": "Servicios",
+			"process": "Proceso",
+			"work": "Trabajos",
+			"pricing": "Precios",
+			"faq": "FAQ",
+			"contact": "Contacto"
+		}
 	},
 	"language": {
 		"en": "English",
