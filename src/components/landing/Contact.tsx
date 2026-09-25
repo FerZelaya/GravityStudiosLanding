@@ -77,8 +77,8 @@ export function Contact() {
         <ScrollReveal delay={0.08} className="mt-8 flex justify-center">
           <ContactChip
             icon={<Mail className="size-5" aria-hidden />}
-            label={t("contact.email.label")}
-            value={t("contact.email.value")}
+            label={""}
+            value={""}
           />
         </ScrollReveal>
 
@@ -182,7 +182,10 @@ export function Contact() {
                     />
                   </div>
                   {submitError ? (
-                    <p className="text-center text-sm text-red-400" role="alert">
+                    <p
+                      className="text-center text-sm text-red-400"
+                      role="alert"
+                    >
                       {submitError}
                     </p>
                   ) : null}

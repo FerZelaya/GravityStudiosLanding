@@ -9,8 +9,6 @@ import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/glass-card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { cn } from "@/lib/utils";
-
 const SANTISO_URL = "https://santisohn.com";
 const highlightKeys = ["design", "sections", "i18n"] as const;
 
@@ -105,14 +103,14 @@ export function Work() {
           </GlassCard>
         </ScrollReveal>
 
-        <div className="mt-8 flex gap-4 overflow-x-auto pb-2 sm:mt-10 sm:grid sm:grid-cols-3 sm:overflow-visible sm:pb-0">
+        <div className="-mx-4 mt-8 flex snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 pb-4 [scrollbar-width:none] sm:mx-0 sm:mt-10 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden">
           {concepts.map((concept, index) => (
             <ScrollReveal
               key={concept.id}
               delay={0.1 + index * 0.06}
-              className={cn("min-w-[78%] shrink-0 sm:min-w-0")}
+              className="w-[82%] max-w-[340px] min-w-0 shrink-0 snap-start sm:w-auto sm:max-w-none"
             >
-              <GlassCard className="group overflow-hidden p-0">
+              <GlassCard className="group h-full overflow-hidden p-0">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
                     src={concept.image}
