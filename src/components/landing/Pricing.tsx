@@ -34,6 +34,9 @@ export function Pricing() {
             title={t("pricing.title")}
             description={t("pricing.description")}
           />
+          <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-white/45">
+            {t("pricing.disclaimer")}
+          </p>
         </ScrollReveal>
 
         <ScrollRevealGroup className="mt-12 grid gap-5 sm:mt-16 md:grid-cols-3">

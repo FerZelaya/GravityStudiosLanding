@@ -236,28 +236,29 @@
 		"eyebrow": "Precios",
 		"title": "Paquetes",
 		"description": "Puntos de partida claros para lanzar y escalar.",
+		"disclaimer": "Estos paquetes son solo de referencia. El alcance final y los precios pueden variar según la llamada de discovery.",
 		"cta": "Contáctanos",
 		"popular": "Más popular",
 		"tiers": {
 			"startup": {
 				"title": "Paquete web startup",
-				"subtitle": "Ideal para sitios de marketing estáticos",
+				"subtitle": "Una landing page simple sin interacción del usuario más allá de un formulario de contacto",
 				"features": [
-					"5 imágenes de stock",
-					"1 página interna",
+					"Landing page de una sola página",
+					"Solo formulario de contacto (sin otras interacciones)",
+					"Imágenes de stock",
 					"Hosting administrado",
 					"Seguridad SSL"
 				]
 			},
 			"professional": {
 				"title": "Paquete web profesional",
-				"subtitle": "Diseñado para crecer con tu negocio",
+				"subtitle": "Un sitio web más robusto con algunas interacciones del usuario",
 				"features": [
-					"7 imágenes de stock",
-					"5 páginas internas",
-					"1 slider de imágenes",
-					"Hosting administrado",
+					"Sitio web de varias páginas",
+					"Interacciones del usuario más allá del formulario de contacto",
 					"Gestor de contenidos (CMS)",
+					"Hosting administrado",
 					"Seguridad SSL",
 					"Optimización SEO"
 				]

@@ -236,28 +236,29 @@
 		"eyebrow": "Pricing",
 		"title": "Website packages",
 		"description": "Clear starting points you can ship with and scale.",
+		"disclaimer": "These packages are for reference only. Final scope and pricing may vary depending on your discovery call.",
 		"cta": "Get in touch",
 		"popular": "Most popular",
 		"tiers": {
 			"startup": {
 				"title": "Startup website package",
-				"subtitle": "Ideal for static marketing sites",
+				"subtitle": "A simple landing page with no user interaction beyond a contact form",
 				"features": [
-					"5 stock images",
-					"1 internal page",
+					"Single landing page",
+					"Contact form only (no other user interactions)",
+					"Stock imagery",
 					"Managed hosting",
 					"SSL security"
 				]
 			},
 			"professional": {
 				"title": "Professional website package",
-				"subtitle": "Built to grow with your business",
+				"subtitle": "A more robust website with some user interactions",
 				"features": [
-					"7 stock images",
-					"5 internal pages",
-					"1 image slider",
-					"Managed hosting",
+					"Multi-page website",
+					"User interactions beyond a contact form",
 					"Content management (CMS)",
+					"Managed hosting",
 					"SSL security",
 					"SEO optimization"
 				]
